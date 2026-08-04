@@ -85,6 +85,8 @@
   <h2 id="result"></h2>
   <h3 id="message"></h3>
 
+  <button id="reloader" hidden=true onclick="reload">NEXT</button>
+
   <script>
     const clickSound = new Audio('vine2.mp3');
    
@@ -497,7 +499,9 @@
 
         clickSound.currentTime = 0;   // rewind so it can play repeatedly
         clickSound.play();
+        document.getElementById("reloader").hidden = false;
 
+      
         if (choice == current.answer) {
             document.getElementById('result').textContent = 
             'CORRECT ANSWER: ' + current.answer; 
