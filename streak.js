@@ -9,13 +9,13 @@ function updateStreakDisplay() {
   if (!streak) {
     streak = document.createElement('div');
     streak.id = 'streak';
-    streak.style.fontSize = '1.4rem';
+    streak.style.fontSize = '2.3rem';
     streak.style.fontWeight = 'bold';
     streak.style.marginTop = '12px';
     document.getElementById('result').insertAdjacentElement('afterend', streak);
   }
 
-  streak.textContent = `🔥 Correct streak: ${correctStreak} | Best: ${bestCorrectStreak}`;
+  streak.textContent = `CURRENT STREAK: ${correctStreak} | PB: ${bestCorrectStreak}`;
 }
 
 function recordAnswer(isCorrect) {
