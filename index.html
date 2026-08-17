@@ -86,7 +86,7 @@
   <h3 id="message"></h3>
 
   <button id="reloader" hidden=true onclick="window.location.reload();">NEXT</button>
-
+  <script src="streak.js"></script>
   <script>
     const clickSound = new Audio('vine2.mp3');
    
@@ -503,12 +503,14 @@
 
       
         if (choice == current.answer) {
+            recordAnswer(true);
             document.getElementById('result').textContent = 
             'CORRECT ANSWER: ' + current.answer; 
             document.getElementById('message').textContent=
             correct[Math.floor(Math.random()*correct.length)];
             document.getElementById('result').style.color = 'lawngreen';
         } else {
+            recordAnswer(false);
             document.getElementById('result').textContent = 
             'Incorrect, it was: ' + current.answer;
             document.getElementById('message').textContent=
