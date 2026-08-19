@@ -1,8 +1,11 @@
 // Correct-answer streak tracking for ECONOMICS BY MISTAKE.
-// This persists the current streak and best streak in localStorage.
+// Uses a new storage namespace so the streak can be reset independently.
 
-let correctStreak = Number(localStorage.getItem('econbymistakeCorrectStreak')) || 0;
-let bestCorrectStreak = Number(localStorage.getItem('econbymistakeBestCorrectStreak')) || 0;
+const STREAK_STORAGE_KEY = 'econbymistakeStreakV2';
+const BEST_STREAK_STORAGE_KEY = 'econbymistakeBestStreakV2';
+
+let correctStreak = Number(localStorage.getItem(STREAK_STORAGE_KEY)) || 0;
+let bestCorrectStreak = Number(localStorage.getItem(BEST_STREAK_STORAGE_KEY)) || 0;
 
 function updateStreakDisplay() {
   let streak = document.getElementById('streak');
@@ -23,13 +26,13 @@ function recordAnswer(isCorrect) {
     correctStreak++;
     if (correctStreak > bestCorrectStreak) {
       bestCorrectStreak = correctStreak;
-      localStorage.setItem('econbymistakeBestCorrectStreak', bestCorrectStreak);
+      localStorage.setItem(BEST_STREAK_STORAGE_KEY, bestCorrectStreak);
     }
   } else {
     correctStreak = 0;
   }
 
-  localStorage.setItem('econbymistakeCorrectStreak', correctStreak);
+  localStorage.setItem(STREAK_STORAGE_KEY, correctStreak);
   updateStreakDisplay();
 }
 
