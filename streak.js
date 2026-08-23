@@ -36,7 +36,7 @@ function updateStreakDisplay() {
   }
 
   const questions24h = getQuestionsInLast24h();
-  streak.textContent = `CURRENT STREAK: ${correctStreak} | PB: ${bestCorrectStreak} | LAST 24H: ${questions24h}`;
+  streak.textContent = `LAST 24H: ${questions24h} | CURRENT STREAK: ${correctStreak} | PB: ${bestCorrectStreak}`;
 }
 
 function recordAnswer(isCorrect) {
