@@ -218,9 +218,7 @@ const answers = [
     { question: "HSC_2021-19.png", answer: "B" },
     { question: "HSC_2021-20.png", answer: "C" },
 
-
-
-        // PLM_SYDTECH_2013
+    // PLM_SYDTECH_2013
     { question: "PLM_SYDTECH_2013-01.png", answer: "C" },
     { question: "PLM_SYDTECH_2013-02.png", answer: "D" },
     { question: "PLM_SYDTECH_2013-03.png", answer: "B" },
@@ -365,7 +363,6 @@ const answers = [
     { question: "PLM_GRAMMAR_2015-20.png", answer: "C" },
 
     // PLM_SYDTECH_2012
-
     { question: "PLM_SYDTECH_2012-01.png", answer: "B" },
     { question: "PLM_SYDTECH_2012-02.png", answer: "B" },
     { question: "PLM_SYDTECH_2012-03.png", answer: "C" },
@@ -385,7 +382,67 @@ const answers = [
     { question: "PLM_SYDTECH_2012-17.png", answer: "B" },
     { question: "PLM_SYDTECH_2012-18.png", answer: "A" },
     { question: "PLM_SYDTECH_2012-19.png", answer: "A" },
-    { question: "PLM_SYDTECH_2012-20.png", answer: "D" }
+    { question: "PLM_SYDTECH_2012-20.png", answer: "D" },
 
-
-    ];
+    // Baulkham Hills Trial (testing branch) — papers with solutions from thsconline
+    { question: "PLM_BHHS_2022-01.png", answer: "C" },
+    { question: "PLM_BHHS_2022-02.png", answer: "BC" },
+    { question: "PLM_BHHS_2022-03.png", answer: "BD" },
+    { question: "PLM_BHHS_2022-04.png", answer: "A" },
+    { question: "PLM_BHHS_2022-05.png", answer: "A" },
+    { question: "PLM_BHHS_2022-06.png", answer: "D" },
+    { question: "PLM_BHHS_2022-07.png", answer: "C" },
+    { question: "PLM_BHHS_2022-08.png", answer: "B" },
+    { question: "PLM_BHHS_2022-09.png", answer: "D" },
+    { question: "PLM_BHHS_2022-10.png", answer: "D" },
+    { question: "PLM_BHHS_2022-11.png", answer: "C" },
+    { question: "PLM_BHHS_2022-12.png", answer: "B" },
+    { question: "PLM_BHHS_2022-13.png", answer: "D" },
+    { question: "PLM_BHHS_2022-14.png", answer: "B" },
+    { question: "PLM_BHHS_2022-15.png", answer: "B" },
+    { question: "PLM_BHHS_2022-16.png", answer: "D" },
+    { question: "PLM_BHHS_2022-17.png", answer: "C" },
+    { question: "PLM_BHHS_2022-18.png", answer: "B" },
+    { question: "PLM_BHHS_2022-19.png", answer: "B" },
+    { question: "PLM_BHHS_2022-20.png", answer: "A" },
+    { question: "PLM_BHHS_2023-01.png", answer: "A" },
+    { question: "PLM_BHHS_2023-02.png", answer: "D" },
+    { question: "PLM_BHHS_2023-03.png", answer: "B" },
+    { question: "PLM_BHHS_2023-04.png", answer: "A" },
+    { question: "PLM_BHHS_2023-05.png", answer: "C" },
+    { question: "PLM_BHHS_2023-06.png", answer: "D" },
+    { question: "PLM_BHHS_2023-07.png", answer: "B" },
+    { question: "PLM_BHHS_2023-08.png", answer: "D" },
+    { question: "PLM_BHHS_2023-09.png", answer: "A" },
+    { question: "PLM_BHHS_2023-10.png", answer: "A" },
+    { question: "PLM_BHHS_2023-11.png", answer: "C" },
+    { question: "PLM_BHHS_2023-12.png", answer: "C" },
+    { question: "PLM_BHHS_2023-13.png", answer: "B" },
+    { question: "PLM_BHHS_2023-14.png", answer: "C" },
+    { question: "PLM_BHHS_2023-15.png", answer: "A" },
+    { question: "PLM_BHHS_2023-16.png", answer: "C" },
+    { question: "PLM_BHHS_2023-17.png", answer: "B" },
+    { question: "PLM_BHHS_2023-18.png", answer: "D" },
+    { question: "PLM_BHHS_2023-19.png", answer: "B" },
+    { question: "PLM_BHHS_2023-20.png", answer: "BC" },
+    { question: "PLM_BHHS_2024-01.png", answer: "D" },
+    { question: "PLM_BHHS_2024-02.png", answer: "CD" },
+    { question: "PLM_BHHS_2024-03.png", answer: "B" },
+    { question: "PLM_BHHS_2024-04.png", answer: "C" },
+    { question: "PLM_BHHS_2024-05.png", answer: "B" },
+    { question: "PLM_BHHS_2024-06.png", answer: "D" },
+    { question: "PLM_BHHS_2024-07.png", answer: "A" },
+    { question: "PLM_BHHS_2024-08.png", answer: "B" },
+    { question: "PLM_BHHS_2024-09.png", answer: "B" },
+    { question: "PLM_BHHS_2024-10.png", answer: "A" },
+    { question: "PLM_BHHS_2024-11.png", answer: "A" },
+    { question: "PLM_BHHS_2024-12.png", answer: "C" },
+    { question: "PLM_BHHS_2024-13.png", answer: "B" },
+    { question: "PLM_BHHS_2024-14.png", answer: "C" },
+    { question: "PLM_BHHS_2024-15.png", answer: "A" },
+    { question: "PLM_BHHS_2024-16.png", answer: "B" },
+    { question: "PLM_BHHS_2024-17.png", answer: "D" },
+    { question: "PLM_BHHS_2024-18.png", answer: "D" },
+    { question: "PLM_BHHS_2024-19.png", answer: "C" },
+    { question: "PLM_BHHS_2024-20.png", answer: "D" }
+];
