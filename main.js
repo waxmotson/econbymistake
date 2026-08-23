@@ -11,13 +11,13 @@ let current = null;
 // Map filename prefixes to subfolders (images uploaded into static/crops_*/)
 function resolveImagePath(filename) {
   const map = {
-    'PLM_ABB_2021-': 'crops_abb2021/',
-    'PLM_JR_2021-':  'crops_jr2021/',
-    'PLM_KNOX_2020-': 'crops_knox2020/',
-    'PLM_KNOX_2021-': 'crops_knox2021/',
-    'PLM_KNOX_2025-': 'crops_knox2025/',
-    'PLM_RIV_2024-':  'crops_riv2024/',
-    'PLM_SG_2021-':   'crops_sg2021/',
+    'TRIAL_ABB_2021-': 'crops_abb2021/',
+    'TRIAL_JR_2021-':  'crops_jr2021/',
+    'TRIAL_KNOX_2020-': 'crops_knox2020/',
+    'TRIAL_KNOX_2021-': 'crops_knox2021/',
+    'TRIAL_KNOX_2025-': 'crops_knox2025/',
+    'TRIAL_RIV_2024-':  'crops_riv2024/',
+    'TRIAL_SG_2021-':   'crops_sg2021/',
   };
   for (const [prefix, folder] of Object.entries(map)) {
     if (filename.startsWith(prefix)) {
