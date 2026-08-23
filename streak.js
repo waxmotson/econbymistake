@@ -1,27 +1,52 @@
 // Correct-answer streak tracking for ECONOMICS BY MISTAKE.
 // Uses a new storage namespace so the streak can be reset independently.
-// Also tracks how many questions were answered in the last 24 hours.
+// Also tracks which questions were answered in the last 24 hours so the
+// same question is not shown again until either 24h pass or every question
+// has been done in that window.
 
 const STREAK_STORAGE_KEY = 'econbymistakeStreakV2';
 const BEST_STREAK_STORAGE_KEY = 'econbymistakeBestStreakV2';
-const QUESTIONS_24H_KEY = 'econbymistakeQuestions24hV1';
+const QUESTIONS_24H_KEY = 'econbymistakeQuestions24hV2';
 
 let correctStreak = Number(localStorage.getItem(STREAK_STORAGE_KEY)) || 0;
 let bestCorrectStreak = Number(localStorage.getItem(BEST_STREAK_STORAGE_KEY)) || 0;
 
-function getQuestionsInLast24h() {
-  let timestamps = [];
+function loadRecentEntries() {
+  let entries = [];
   try {
-    timestamps = JSON.parse(localStorage.getItem(QUESTIONS_24H_KEY) || '[]');
+    entries = JSON.parse(localStorage.getItem(QUESTIONS_24H_KEY) || '[]');
   } catch (e) {
-    timestamps = [];
+    entries = [];
   }
-  if (!Array.isArray(timestamps)) timestamps = [];
+  if (!Array.isArray(entries)) entries = [];
 
   const cutoff = Date.now() - 24 * 60 * 60 * 1000;
-  timestamps = timestamps.filter(t => typeof t === 'number' && t > cutoff);
-  localStorage.setItem(QUESTIONS_24H_KEY, JSON.stringify(timestamps));
-  return timestamps.length;
+  entries = entries.filter(e => e && typeof e.t === 'number' && e.t > cutoff && typeof e.q === 'string');
+  localStorage.setItem(QUESTIONS_24H_KEY, JSON.stringify(entries));
+  return entries;
+}
+
+function getQuestionsInLast24h() {
+  return loadRecentEntries().length;
+}
+
+/** Returns a Set of question filenames answered in the last 24 hours. */
+function getRecentQuestionIds() {
+  return new Set(loadRecentEntries().map(e => e.q));
+}
+
+/**
+ * Pick a random question from `answers`, preferring ones not seen in the
+ * last 24 hours. Falls back to the full list only when every question has
+ * already been answered in that window.
+ */
+function pickQuestion(allAnswers) {
+  if (!allAnswers || allAnswers.length === 0) return null;
+
+  const recent = getRecentQuestionIds();
+  const unseen = allAnswers.filter(a => !recent.has(a.question));
+  const pool = unseen.length > 0 ? unseen : allAnswers;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 function updateStreakDisplay() {
@@ -39,19 +64,13 @@ function updateStreakDisplay() {
   streak.textContent = `LAST 24H: ${questions24h} | CURRENT STREAK: ${correctStreak} | PB: ${bestCorrectStreak}`;
 }
 
-function recordAnswer(isCorrect) {
-  // Track every answered question in the rolling 24h window
-  let timestamps = [];
-  try {
-    timestamps = JSON.parse(localStorage.getItem(QUESTIONS_24H_KEY) || '[]');
-  } catch (e) {
-    timestamps = [];
+function recordAnswer(isCorrect, questionId) {
+  // Track every answered question (with id) in the rolling 24h window
+  const entries = loadRecentEntries();
+  if (questionId) {
+    entries.push({ q: questionId, t: Date.now() });
+    localStorage.setItem(QUESTIONS_24H_KEY, JSON.stringify(entries));
   }
-  if (!Array.isArray(timestamps)) timestamps = [];
-  timestamps.push(Date.now());
-  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
-  timestamps = timestamps.filter(t => typeof t === 'number' && t > cutoff);
-  localStorage.setItem(QUESTIONS_24H_KEY, JSON.stringify(timestamps));
 
   if (isCorrect) {
     correctStreak++;
