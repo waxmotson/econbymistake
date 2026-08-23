@@ -42,7 +42,8 @@ function check(choice) {
     document.getElementById("reloader").hidden = false;
 
   
-    if (choice == current.answer) {
+    // Accept single letter or any letter that appears in multi-letter answers (e.g. "BC")
+    if (current.answer.includes(choice)) {
         recordAnswer(true, current.question);
         document.getElementById('result').textContent = 
         'CORRECT ANSWER: ' + current.answer; 
