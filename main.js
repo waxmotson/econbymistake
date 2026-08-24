@@ -8,26 +8,6 @@ const incorrect = ["Someone needs to study.", "Misclick?", "Putting the mistake 
 
 let current = null;
 
-// Map filename prefixes to subfolders (images uploaded into static/crops_*/)
-function resolveImagePath(filename) {
-  const map = {
-    'TRIAL_ABB_2021-': 'crops_abb2021/',
-    'TRIAL_JR_2021-':  'crops_jr2021/',
-    'TRIAL_KNOX_2020-': 'crops_knox2020/',
-    'TRIAL_KNOX_2021-': 'crops_knox2021/',
-    'TRIAL_KNOX_2025-': 'crops_knox2025/',
-    'TRIAL_RIV_2024-':  'crops_riv2024/',
-    'TRIAL_SG_2021-':   'crops_sg2021/',
-  };
-  for (const [prefix, folder] of Object.entries(map)) {
-    if (filename.startsWith(prefix)) {
-      return 'static/' + folder + filename;
-    }
-  }
-  // Default: image is directly in static/
-  return 'static/' + filename;
-}
-
 function loadRandom() {
   answered = false;
 
@@ -40,8 +20,10 @@ function loadRandom() {
     ? pickQuestion(answers)
     : answers[Math.floor(Math.random() * answers.length)];
 
-  document.getElementById('title').textContent = current.question;
-  document.getElementById('question-img').src = resolveImagePath(current.question);
+  // Show just the filename in the title (strip any subfolder)
+  document.getElementById('title').textContent = current.question.split('/').pop();
+  // question field may include a subfolder, e.g. crops_abb2021/TRIAL_ABB_2021-01.png
+  document.getElementById('question-img').src = 'static/' + current.question;
   document.getElementById('result').textContent = '';
 }
 
